@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="navbar-logo">
         <Link to="/">EduWebsite</Link>
       </div>
-      <div className="navbar-menu" onClick={toggleMobileMenu}>
+      <div className="navbar-menu"  >
         {isMobileMenuOpen ? (
           <FaTimes className="navbar-menu-icon" />
         ) : (
@@ -24,16 +24,22 @@ const Navbar = () => {
       </div>
       <ul className={`navbar-links ${isMobileMenuOpen ? 'active' : ''}`}>
         <li>
-          <Link to="/" onClick={toggleMobileMenu}>Home</Link>
+          <Link to="/" >Home</Link>
         </li>
         <li>
-          <Link to="/courses" onClick={toggleMobileMenu}>Courses</Link>
+          <Link to="/courses" >Courses</Link>
         </li>
         <li>
-          <Link to="/about" onClick={toggleMobileMenu}>About</Link>
+          <Link to="/about" >About</Link>
         </li>
         <li>
-          <Link to="/contact" onClick={toggleMobileMenu}>Contact</Link>
+          <Link to="/contact" >Contact</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/signup">Signup</Link>
         </li>
       </ul>
     </nav>
