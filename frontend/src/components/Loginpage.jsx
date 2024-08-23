@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../style/Loginpage.css';
 import { useNavigate } from 'react-router-dom';
 
 function Loginpage() {
   const navigate = useNavigate();
+  const [loading, setloading] = useState();
 
-  const handleClick = () => {
-    navigate('/signup')
+  const handleClick = async () => {
+    navigate('/');
   }
 
   return (
@@ -26,6 +27,7 @@ function Loginpage() {
         </form>
         <p className="signup-text">Don't have an account? <a href="/signup">Sign Up</a></p>
       </div>
+      <h1>{loading}</h1>
     </div>
   );
 }
