@@ -30,17 +30,17 @@ const Home = () => {
         <h2>Featured Courses</h2>
         <div className="courses-grid">
           <div className="course-card">
-            <h3>Course Title 1</h3>
+            <h3>Engineering</h3>
             <p>Short description of the course.</p>
             <a href="/course/1" className="btn-secondary">Learn More</a>
           </div>
           <div className="course-card">
-            <h3>Course Title 2</h3>
+            <h3>Medical</h3>
             <p>Short description of the course.</p>
             <a href="/course/2" className="btn-secondary">Learn More</a>
           </div>
           <div className="course-card">
-            <h3>Course Title 3</h3>
+            <h3>Commerce</h3>
             <p>Short description of the course.</p>
             <a href="/course/3" className="btn-secondary">Learn More</a>
           </div>
