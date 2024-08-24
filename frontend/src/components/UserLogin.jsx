@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
- 
+import Loader from './Loader'; // Import the Loader component
 
 const Login = () => {
   const navigate = useNavigate();
@@ -9,48 +9,42 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [isMentor, setIsMentor] = useState(false); // State to toggle between User and Mentor login
   const [loginSuccessful, setLoginSuccessful] = useState(false);
-const [msg,setmsg]=useState();
- 
+  const [msg, setMsg] = useState('');
+  const [loading, setLoading] = useState(false); // State to handle loader
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Start loader
     try {
-      const endpoint = isMentor ? 'http://localhost:4000/data/mentorlogin' : 'http://localhost:4000/data/login';
+      const endpoint = isMentor ? 'https://web-wizard-backend.onrender.com/data/mentorlogin' : 'https://web-wizard-backend.onrender.com/data/login';
       const response = await axios.post(endpoint, { email, password });
       const { data } = response;
       const { result } = data;
-      navigate('/Udash'); // Redirect to home page after a brief delay
-
 
       if (result) {
         console.log(data.msg);
-        setmsg('Login successful........')
-        // Store email and password in localStorage
+        setMsg('Login successful........');
         localStorage.setItem('userEmail', email);
         localStorage.setItem('userPassword', password);
-
-        console.log(localStorage.getItem(email));
-
-        // Dispatch the setLogin action with the login data
-         setLoginSuccessful(true);
-         navigate('/Udash'); // Redirect to home page after a brief delay
-
-        // Redirect or perform other actions upon successful login
-        setTimeout(() => {
-        }, 2000); // Delay in milliseconds (2 seconds here)
+        setLoginSuccessful(true);
       } else {
         console.log(data.msg);
-        setmsg(data.msg)
+        setMsg(data.msg);
       }
+      navigate('/Udash');
 
     } catch (error) {
       console.log('Login failed', error);
+    } finally {
+      setLoading(false); // Stop loader
     }
   };
 
   return (
     <>
-      {
+      {loading ? (
+        <Loader /> // Show loader when loading state is true
+      ) : (
         loginSuccessful ? (
           <div className="bg-green-100 min-h-screen flex flex-col items-center justify-center p-4">
             <div className="bg-green-50 p-6 rounded-lg shadow-lg w-full max-w-md sm:w-96 md:w-1/2 lg:w-1/3">
@@ -125,11 +119,11 @@ const [msg,setmsg]=useState();
                   {isMentor ? 'Login as User' : 'Login as Mentor'}
                 </button>
               </div>
-            <h4>{msg}</h4>
+              <h4>{msg}</h4>
             </div>
           </div>
         )
-      }
+      )}
     </>
   );
 };

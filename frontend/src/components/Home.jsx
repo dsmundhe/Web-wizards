@@ -1,11 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 
 const Home = () => {
 
- 
+
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+
+ 
+
+  console.log(setEmail, setPassword)
 
   const createZoom = () => {
     navigate('/zoom');

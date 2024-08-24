@@ -72,7 +72,7 @@ const JoinAsMentor = () => {
     
     try {
       const { name, email, phone, password } = formData;
-      await axios.post('http://localhost:4000/data/mentorsignup', { name, email, phone, password });
+      await axios.post('https://web-wizard-backend.onrender.com/data/mentorsignup', { name, email, phone, password });
       
       // Store email and password in localStorage
       localStorage.setItem('userCredentials', JSON.stringify({ email, password }));

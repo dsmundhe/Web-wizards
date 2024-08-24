@@ -13,9 +13,9 @@ const mentorSlice = createSlice({
         },
         removeMentorData: (state, action) => {
             state.mentors = state.mentors.filter((_, index) => index !== action.payload);
-          },  
+        },
     },
 });
 
-export const {addMentorData, removeMentorData} = mentorSlice.actions;
+export const { addMentorData, removeMentorData } = mentorSlice.actions;
 export default mentorSlice.reducer;
